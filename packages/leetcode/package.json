@@ -1,0 +1,10 @@
+{
+	"name": "leetcode",
+	"version": "1.0.0",
+	"scripts": {},
+	"keywords": [],
+	"author": "kongsacn@gmail.com",
+	"devDependencies": {
+		"typescript": "^5.6.3"
+	}
+}

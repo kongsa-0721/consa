@@ -1,0 +1,11 @@
+.vscode
+.idea
+.DS_Store
+
+node_modules
+dist
+temp
+
+.env
+.env.*
+venv
