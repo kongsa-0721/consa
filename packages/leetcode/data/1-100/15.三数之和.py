@@ -49,4 +49,6 @@ class Solution:
 
 solution = Solution()
 
-solution.threeSum([-1, 0, 1, 2, -1, -4])
+cc = solution.threeSum([-1, 0, 1, 2, -1, -4])
+
+print(cc)
