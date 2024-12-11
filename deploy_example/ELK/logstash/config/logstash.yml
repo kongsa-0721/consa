@@ -1,0 +1,5 @@
+xpack.monitoring.enabled: false
+xpack.monitoring.elasticsearch.hosts: ['http://localhost:9200']
+xpack.monitoring.elasticsearch.username: 'elastic'
+xpack.monitoring.elasticsearch.password: 'R3!ff4pp!'
+xpack.monitoring.collection.interval: 20s

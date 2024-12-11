@@ -1,0 +1,43 @@
+# 集群节点名称
+node.name: 'es_node_001'
+
+# 设置集群名称为elasticsearch
+cluster.name: 'es_cluster_001'
+
+# 以单一节点模式启动
+discovery.type: single-node
+
+# 注意：ES 8.X的版本，需要使用 node.roles配置角色，否则启动报错
+#当前该节点是不是有资格竞选主节点
+#node.master: true
+#当前该节点是否存储数据
+#node.data: true
+node.roles: [master, data, remote_cluster_client]
+
+# 是否支持跨域
+http.cors.enabled: true
+
+# 表示支持所有域名
+http.cors.allow-origin: '*'
+
+# 设置映射端口
+http.host: '0.0.0.0'
+http.port: 9200
+
+# 内部节点之间沟通端口
+transport.port: 9300
+
+# 内存交换的选项，官网建议为true
+bootstrap.memory_lock: true
+
+# 修改安全配置、关闭证书校验、启动xpack监控
+xpack.security.http.ssl:
+    enabled: false
+xpack.security.transport.ssl:
+    enabled: false
+xpack.security.enabled: true
+xpack.monitoring.collection.enabled: true
+xpack.security.authc.api_key.enabled: true
+
+# http传输内容的最大容量
+http.max_content_length: 200mb

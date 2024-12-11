@@ -1,0 +1,44 @@
+version: '3'
+services:
+    elasticsearch:
+        restart: always
+        image: elasticsearch:8.16.1
+        container_name: ks_elasticsearch
+        hostname: elasticsearch
+        privileged: true
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        environment:
+            - 'ES_JAVA_OPTS=-Xms512m -Xmx512m'
+            - 'ELASTIC_PASSWORD=R3!ff4pp!'
+        ports:
+            - '9200:9200' # elasticsearch
+            - '9201:9300' # elasticsearch transport
+            - '9202:9600' # logstash
+            - '9203:5601' # kibana
+        volumes:
+            - '${ELK_COMMON_PATH}/es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml'
+            - '${ELK_COMMON_PATH}/es/plugins:/usr/share/elasticsearch/plugins:rw'
+            - '${ELK_COMMON_PATH}/es/data:/usr/share/elasticsearch/data:rw'
+            - '${ELK_COMMON_PATH}/es/logs:/usr/share/elasticsearch/logs:rw'
+
+    logstash:
+        restart: always
+        image: logstash:8.16.1
+        container_name: ks_logstash
+        network_mode: 'service:elasticsearch'
+        volumes:
+            - '${ELK_COMMON_PATH}/logstash/config:/usr/share/logstash/config'
+            - '${ELK_COMMON_PATH}/logstash/pipelines:/usr/share/logstash/pipeline'
+            - '${ELK_COMMON_PATH}/logstash/sincedb:/usr/share/logstash/sincedb'
+            - '/Users/kongsa/Desktop/dipeak/ask-bi/logs:/logs/ask-bi-log'
+
+    kibana:
+        restart: always
+        image: kibana:8.16.1
+        container_name: ks_kibana
+        network_mode: 'service:elasticsearch'
+        volumes:
+            - '${ELK_COMMON_PATH}/kibana/config:/usr/share/kibana/config'
