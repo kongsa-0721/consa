@@ -1,0 +1,137 @@
+{
+	"editor.fontSize": 15,
+	"editor.tabSize": 2,
+	"editor.quickSuggestions": { "strings": "on" },
+	"editor.unicodeHighlight.ambiguousCharacters": false,
+	"extensions.autoUpdate": "onlyEnabledExtensions",
+	"liveServer.settings.donotShowInfoMsg": true,
+	"tabnine.experimentalAutoImports": true,
+	"terminal.integrated.fontFamily": "Monaco",
+	"terminal.integrated.fontSize": 13,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.colorCustomizations": {
+		"terminal.background": "#393b3d",
+		"terminal.foreground": "#ff5fbc",
+		"terminal.ansiBrightCyan": "#f8bbbb",
+		"terminal.ansiBrightGreen": "#1eff00",
+		"terminal.ansiBrightYellow": "#fffb00",
+		"terminal.ansiCyan": "#a9f7ec",
+		"terminal.ansiGreen": "#64ff78",
+		"terminalCursor.background": "#D8D8D8",
+		"terminalCursor.foreground": "#D8D8D8",
+		"terminal.ansiBlack": "#181818",
+		"terminal.ansiBlue": "#d36464",
+		"terminal.ansiBrightBlack": "#bea8a8",
+		"terminal.ansiBrightBlue": "#ad3b3b",
+		"terminal.ansiBrightMagenta": "#943d3d",
+		"terminal.ansiBrightRed": "#db3a35",
+		"terminal.ansiBrightWhite": "#F8F8F8",
+		"terminal.ansiMagenta": "#bd9f9f",
+		"terminal.ansiRed": "#AB4642",
+		"terminal.ansiWhite": "#31962e",
+		"terminal.ansiYellow": "#e7da22",
+		"terminal.integrated.letterSpacing": 0.1,
+		"terminal.integrated.fontSize": 30
+	},
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"prettier.printWidth": 120,
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"prettier.semi": false,
+	"prettier.singleQuote": true,
+	"prettier.quoteProps": "as-needed",
+	"prettier.jsxSingleQuote": true,
+	"prettier.bracketSpacing": true,
+	"prettier.bracketSameLine": false,
+	"prettier.arrowParens": "always",
+	"prettier.requirePragma": false,
+	"prettier.insertPragma": false,
+	"prettier.proseWrap": "preserve",
+	"prettier.htmlWhitespaceSensitivity": "ignore",
+	"prettier.endOfLine": "lf",
+	"prettier.embeddedLanguageFormatting": "auto",
+	"prettier.trailingComma": "none",
+	"vim.normalModeKeyBindings": [
+		{
+			"before": ["H"],
+			"after": ["^"]
+		},
+		{
+			"before": ["L"],
+			"after": ["g", "_"]
+		}
+	],
+	"vim.insertModeKeyBindings": [
+		{
+			"before": ["j", "j"],
+			"after": ["<Esc>"]
+		}
+	],
+	"vim.operatorPendingModeKeyBindings": [
+		{
+			"before": ["H"],
+			"after": ["^"]
+		},
+		{
+			"before": ["L"],
+			"after": ["g", "_"]
+		}
+	],
+	"cSpell.userWords": [
+		"ahooks",
+		"arrowParens",
+		"axios",
+		"buildx",
+		"bytenode",
+		"clsx",
+		"datasource",
+		"dipeak",
+		"donot",
+		"echarts",
+		"esbenp",
+		"gitee",
+		"iconfont",
+		"immer",
+		"innodb",
+		"keyof",
+		"kongsa",
+		"MUNIUYUN",
+		"Popconfirm",
+		"publickey",
+		"tabnine",
+		"tailwindcss"
+	],
+	"tailwindCSS.experimental.classRegex": [
+		["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+	],
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"diffEditor.experimental.showMoves": true,
+	"diffEditor.ignoreTrimWhitespace": true,
+	"workbench.colorTheme": "Default Dark+",
+	"editor.formatOnSave": true,
+	"prisma.showPrismaDataPlatformNotification": false,
+	"python.terminal.activateEnvInCurrentTerminal": true,
+	"json.schemaDownload.enable": false,
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.black-formatter",
+		"editor.formatOnSave": true
+	},
+	"[sql]": {
+		"editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+	},
+	"editor.detectIndentation": false,
+	"editor.indentSize": "tabSize",
+	"git.autofetch": true
+}
