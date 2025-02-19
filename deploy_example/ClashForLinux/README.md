@@ -118,3 +118,33 @@ systemctl status docker
 ```
 
 8. 服务器放行端口
+
+在服务器管理界面放行外部需要使用的端口 类似7890 5000
+
+9. 使用systemctl管理clash.service
+
+```
+1. 进入/etc/systemd/system文件夹，创建clash.service文件
+2. 写入内容
+[Unit]
+Description=Proxy Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/clash -f /root/.config/clash/config.yaml
+StandardOutput=append:/root/clash.log
+StandardError=append:/root/clash.log
+
+[Install]
+WantedBy=multi-user.target
+3. 重新加载 Systemd 配置
+sudo systemctl daemon-reload
+4. 启动服务
+sudo systemctl start clash
+5. 查看服务状态：
+sudo systemctl status clash
+6. 设置服务开机自启（可选）：
+sudo systemctl enable clash
+
+```
