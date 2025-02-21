@@ -1,10 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# 分享历史 在每一次使用之后立即加入到历史中
-#setopt share_history
-#setopt inc_append_history
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -13,8 +9,16 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="dracula"
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
 source $ZSH/oh-my-zsh.sh
+# ZSH_THEME_GIT_PROMPT_DIRTY=")%F{#FFADD2} ✗ %{$reset_color%}"
 
 
 # nvm config
@@ -39,6 +43,10 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottl
 #设置maven环境
 export M2_HOME=/usr/local/apache-maven-3.9.3
 export PATH=${PATH}:${M2_HOME}/bin
+
+# 分享历史 在每一次使用之后立即加入到历史中
+#setopt share_history
+#setopt inc_append_history
 
 # postgresql 的地址配置
 export PATH="/opt/homebrew/opt/postgresql@14/bin:$PATH"
@@ -65,5 +73,21 @@ alias gl='git pull --rebase'
 alias gs='git stash'
 alias gsp='git stash pop'
 alias np='pnpm'
-alias proxy='export http_proxy=http://127.0.0.1:7890; export https_proxy=$http_proxy;'
 alias ioa='sudo ifconfig en0 down && sudo ifconfig en1 down && sudo ifconfig en2 down && sudo ifconfig en0 up && sudo ifconfig en1 up && sudo ifconfig en2 up'
+
+# Open proxy
+proxy_on() {
+    export https_proxy="http://127.0.0.1:7890"
+    export http_proxy="http://127.0.0.1:7890"
+    echo -e "\033[32m[√] HTTP/HTTPS Proxy on 已开启代理\033[0m"
+}
+# Close proxy
+proxy_off() {
+    unset http_proxy
+    unset https_proxy
+    echo -e "\033[31m[×] HTTP/HTTPS Proxy off 已关闭代理\033[0m"
+}
+
+
+OLLAMA_HOST=0.0.0.0:11234
+OLLAMA_MODELS=/Users/kongsa/Desktop/init/models
