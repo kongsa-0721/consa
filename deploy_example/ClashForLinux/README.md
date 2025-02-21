@@ -146,7 +146,7 @@ sudo systemctl start clash
 sudo systemctl status clash
 6. 设置服务开机自启（可选）：
 sudo systemctl enable clash
-7. 安装clash可视化界面
+7. 安装clash可视化界面 yacd
 - wget https://github.com/haishanh/yacd/releases/download/v0.3.8/yacd.tar.xz
 - tar -xJf yacd.tar.xz
 - 移动到 /root/.config/clash/
