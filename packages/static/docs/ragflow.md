@@ -13,7 +13,7 @@ ragflow 8081:80
 可能涉及到docker compose无法启动，需要本地手动拉取相应的镜像
 image 架构不兼容 强行拉取
 docker pull --platform=linux/amd64 infiniflow/ragflow:v0.16.0
-可以拉取轻量版 用 nomic-embed-text / bge-m3 做 embadding
+可以拉取轻量版 用 nomic-embed-text / bge-m3 做 embedding
 
 启动
 docker compose -p ragflow -f docker/docker-compose.yml up -d

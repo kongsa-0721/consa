@@ -1,4 +1,27 @@
 {
-	"words": ["consa", "commitizen", "templater"],
+	"words": [
+		"commitizen",
+		"consa",
+		"containerd",
+		"deepseek",
+		"Dify",
+		"infiniflow",
+		"memlock",
+		"mmdb",
+		"nohup",
+		"nomic",
+		"OLLAMA",
+		"publickey",
+		"ragflow",
+		"rubydebug",
+		"setlocale",
+		"sincedb",
+		"tabnine",
+		"templater",
+		"ulimits",
+		"venv",
+		"xpack",
+		"yacd"
+	],
 	"ignorePaths": []
 }

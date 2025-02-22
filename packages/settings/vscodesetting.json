@@ -87,30 +87,7 @@
 			"after": ["g", "_"]
 		}
 	],
-	"cSpell.userWords": [
-		"ahooks",
-		"arrowParens",
-		"axios",
-		"buildx",
-		"bytenode",
-		"clsx",
-		"datasource",
-		"dipeak",
-		"donot",
-		"echarts",
-		"esbenp",
-		"gitee",
-		"iconfont",
-		"immer",
-		"innodb",
-		"keyof",
-		"kongsa",
-		"MUNIUYUN",
-		"Popconfirm",
-		"publickey",
-		"tabnine",
-		"tailwindcss"
-	],
+	"cSpell.userWords": ["buildx", "dipeak", "donot", "gitee", "keyof", "kongsa"],
 	"tailwindCSS.experimental.classRegex": [
 		["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
 	],
