@@ -47,7 +47,7 @@ module.exports = {
 		{
 			type: "input",
 			name: "customScope",
-			message: "请输入自定义的变更的范围(可选):",
+			message: "请输入自定义的变更的范围(可选):\n",
 			when(answers) {
 				return answers.scope === "custom";
 			},
@@ -60,7 +60,7 @@ module.exports = {
 		{
 			type: "input",
 			name: "subject",
-			message: "请简明扼要的摘要描述(建议字数在50字内):",
+			message: "请简明扼要的摘要描述(建议字数在50字内):\n",
 			validate(value) {
 				if (!value) {
 					return `[subject] 不能为空`;
