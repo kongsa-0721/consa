@@ -1,16 +1,16 @@
 i18n.locale: zh-CN
-server.host: '0.0.0.0'
+server.host: "0.0.0.0"
 server.port: 5601
-server.publicBaseUrl: 'http://127.0.0.1:9203'
-server.shutdownTimeout: '5s'
-elasticsearch.hosts: ['http://ks_elasticsearch:9200']
+server.publicBaseUrl: "http://127.0.0.1:9203"
+server.shutdownTimeout: "5s"
+elasticsearch.hosts: ["http://ks_elasticsearch:9200"]
 monitoring.ui.container.elasticsearch.enabled: true
 
 #此处为新生成的kibana账号和密码
-elasticsearch.username: 'kibana_admin'
-elasticsearch.password: 'R3!ff4pp!'
+elasticsearch.username: "kibana_admin"
+elasticsearch.password: "R3!ff4pp!"
 
 xpack.monitoring.enabled: true
-xpack.monitoring.elasticsearch.hosts: ['http://ks_elasticsearch:9200']
+xpack.monitoring.elasticsearch.hosts: ["http://ks_elasticsearch:9200"]
 xpack.monitoring.kibana.collection.enabled: true
 xpack.monitoring.kibana.collection.interval: 10000
