@@ -2,7 +2,8 @@
 	"name": "consa",
 	"version": "1.0.0",
 	"scripts": {
-		"commit": "cz"
+		"commit": "cz",
+		"format": "prettier --write \"packages/**/*.{js,ts,jsx,tsx,md}\" \"deploy_example/**/*.{js,ts,jsx,tsx,md}\""
 	},
 	"keywords": [],
 	"author": "kongsacn@gmail.com",
