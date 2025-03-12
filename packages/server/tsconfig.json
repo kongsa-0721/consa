@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    // 指定模块系统，这里使用 CommonJS（适用于 Node.js 环境）
+    "module": "CommonJS",
+    // 指定 ECMAScript 版本，这里使用 ES2022，支持较新的 JavaScript 语法
+    "target": "ES2022",
+    // 启用严格模式，包含 `noImplicitAny`、`strictNullChecks` 等多个严格检查选项
+    "strict": true,
+    // 允许在 CommonJS 模块中使用 ES 模块的 `import` 语法，避免 `require` 相关的报错
+    "esModuleInterop": true,
+    // 启用实验性的装饰器支持（用于类装饰器、方法装饰器等）
+    "experimentalDecorators": true,
+    // 允许 TypeScript 在编译时为装饰器生成元数据（通常与 `reflect-metadata` 一起使用）
+    "emitDecoratorMetadata": true,
+    // 跳过库文件（如 `node_modules` 中的 `.d.ts`）的类型检查，提高编译速度
+    "skipLibCheck": true,
+    // 指定编译输出目录，编译后的文件会存放在 `dist` 目录下
+    "outDir": "dist",
+    // 指定 TypeScript 源代码所在目录，TypeScript 只会编译 `src` 目录中的文件
+    "rootDir": "src"
+  }
+}
