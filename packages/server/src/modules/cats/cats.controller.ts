@@ -1,33 +1,55 @@
 import {
 	Controller,
 	Get,
+	Post,
+	Put,
+	Delete,
+	Req,
+	Res,
 	Header,
 	HttpStatus,
 	Param,
 	Query,
-	Req,
-	Res,
+	Body,
 } from "@nestjs/common";
 import { CatsService } from "./cats.service";
 import { Request, Response } from "express";
+import { AdoptionCatDto, UpdateCatDto } from "./cats.dto";
 
 @Controller("cats")
 export class CatsController {
 	constructor(private readonly catsService: CatsService) {}
 
 	@Get("")
-	@Header("Cache-Control", "no-store") // 设置response请求头
-	getAllUsers(
-		@Param("id") id: string, // 这里需要注名要展示的key
+	@Header("Cache-Control", "no-store")
+	getCatsList(
 		@Query("age") age: number,
 		@Req() request: Request,
 		@Res() response: Response,
 	): void {
-		console.log("Can get request parameters", request.url, request.host);
-		console.log("Can receive params", id);
-		console.log("Can receive query", age, typeof age);
-		response.setHeader("X-Custom-Header", "kongsa"); // 灵活的设置response请求头
+		response.setHeader("X-Cat-Age", request.host + " " + age);
 		response.status(HttpStatus.OK);
 		response.json(this.catsService.getCats()); // 函数自然结束 不需要return 函数类型改为void
+	}
+
+	@Get(":name")
+	getCatById(@Param("name") name: string) {
+		console.log("Can receive params", name);
+		return this.catsService.getCatByName(name);
+	}
+
+	@Post("")
+	AdoptionCats(@Body() adoptionCatDto: AdoptionCatDto) {
+		return this.catsService.AdoptionCat(adoptionCatDto);
+	}
+
+	@Put(":name")
+	updateCat(@Param("name") name: string, @Body() updateCatDto: UpdateCatDto) {
+		return this.catsService.updateCat(name, updateCatDto);
+	}
+
+	@Delete(":name")
+	deleteCat(@Param("name") name: string) {
+		return this.catsService.deleteCat(name);
 	}
 }
