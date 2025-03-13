@@ -100,8 +100,8 @@ module.exports = {
 		let template = "";
 
 		template += answers.type ? `${answers.type}` : ``;
-		template += answers.scope ? `[${answers.scope}]` : ``;
-		template += answers.subject ? `${answers.subject}` : ``;
+		template += answers.scope ? `[${answers.scope}]` + " " : ``;
+		template += `${answers.subject.replace(/^\w/, (match) => match.toUpperCase())}`;
 		template += answers.body ? `\n\n${wrap(answers.body)}` : ``;
 		template += answers.breaking ? `\n\nBREAKING CHANGE: ${wrap(answers.breaking)}` : ``;
 		template += answers.footer ? `\n\nISSUES CLOSED: ${wrap(answers.footer)}` : ``;
