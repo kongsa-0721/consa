@@ -36,9 +36,10 @@ module.exports = {
 			choices() {
 				return [
 					{ name: "无", value: false },
-					{ name: "client", value: "[CLIENT]" },
-					{ name: "server", value: "[SERVER]" },
-					{ name: "doc", value: "[DOC]" },
+					{ name: "client", value: "CLIENT" },
+					{ name: "server", value: "SERVER" },
+					{ name: "common", value: "COMMON" },
+					{ name: "doc", value: "DOC" },
 				];
 			},
 			filter(value, answers) {
@@ -99,7 +100,7 @@ module.exports = {
 		let template = "";
 
 		template += answers.type ? `${answers.type}` : ``;
-		template += answers.scope ? `(${answers.scope})` : ``;
+		template += answers.scope ? `[${answers.scope}]` : ``;
 		template += answers.subject ? `${answers.subject}` : ``;
 		template += answers.body ? `\n\n${wrap(answers.body)}` : ``;
 		template += answers.breaking ? `\n\nBREAKING CHANGE: ${wrap(answers.breaking)}` : ``;
