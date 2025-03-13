@@ -36,7 +36,9 @@ module.exports = {
 			choices() {
 				return [
 					{ name: "无", value: false },
-					{ name: "自定义", value: "custom" },
+					{ name: "client", value: "[CLIENT]" },
+					{ name: "server", value: "[SERVER]" },
+					{ name: "doc", value: "[DOC]" },
 				];
 			},
 			filter(value, answers) {
