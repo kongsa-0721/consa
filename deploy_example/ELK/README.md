@@ -26,3 +26,21 @@ curl -u 'elastic:R3!ff4pp!' -X POST "http://localhost:9200/_security/user/kibana
 
 curl -u 'elastic:R3!ff4pp!' -X GET "http://localhost:9200/_security/user/kibana_admin"
 ```
+
+4. kibana添加运行时字段
+```
+eg: 某个字段duration 一个位置存储的是 "100" / "100ms" 需要格式化成 100
+不需要改动logstash的pipeline
+在Stack Management => 数据视图 => ask-bi => 添加字段 设置值
+if (doc.containsKey('duration.keyword') && doc['duration.keyword'].size() > 0) {
+    String durationStr = doc['duration.keyword'].value;
+    if (durationStr.endsWith('ms')) {
+        emit(Integer.parseInt(durationStr.substring(0, durationStr.length() - 2))); // 去掉 'ms'
+    } else {
+        emit(Integer.parseInt(durationStr)); // 直接转换
+    }
+} else {
+    emit(0); // 默认值
+}
+
+```
