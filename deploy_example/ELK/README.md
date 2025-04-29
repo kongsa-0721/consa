@@ -1,6 +1,11 @@
 ### ELK 日志简要部署 版本 8.16.1
 
-1. docker-compose up -d
+1. 启动/停止
+```
+docker compose -f ./docker-compose.yaml -p elk up -d
+docker compose -f ./docker-compose.yaml -p elk down
+```
+
 2. 检测 elastic 有没有通过 logstash 拿到日志
 
 ```

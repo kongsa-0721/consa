@@ -1,4 +1,3 @@
-version: "3"
 services:
   elasticsearch:
     restart: always
@@ -33,7 +32,7 @@ services:
       - "${ELK_COMMON_PATH}/logstash/config:/usr/share/logstash/config"
       - "${ELK_COMMON_PATH}/logstash/pipelines:/usr/share/logstash/pipeline"
       - "${ELK_COMMON_PATH}/logstash/sincedb:/usr/share/logstash/sincedb"
-      - "/Users/kongsa/Desktop/dipeak/ask-bi/logs:/logs/ask-bi-log"
+      - "${LOGSTASH_ORIGIN_DATA_PATH}:/logs/ask-bi-log"
 
   kibana:
     restart: always
