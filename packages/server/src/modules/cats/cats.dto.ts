@@ -7,8 +7,8 @@ export const CreateCatSchema = z.object({
 	breed: z.string().optional(),
 });
 
-export type AdoptionCatDto = z.infer<typeof CreateCatSchema>;
-
 export const UpdateCatSchema = CreateCatSchema.partial();
+
+export type AdoptionCatDto = z.infer<typeof CreateCatSchema>;
 
 export type UpdateCatDto = z.infer<typeof UpdateCatSchema>;
