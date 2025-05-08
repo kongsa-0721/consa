@@ -41,3 +41,6 @@ xpack.security.authc.api_key.enabled: true
 
 # http传输内容的最大容量
 http.max_content_length: 200mb
+
+# 异步搜索响应
+search.max_async_search_response_size: 200mb
