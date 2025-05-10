@@ -126,15 +126,52 @@
 
 
 
+整合 范围 进度 成本 质量 资源 沟通 风险 采购 干系人
+制定项目章程 制定项目管理计划 指导与管理项目工作 管理项目知识 监控项目工作 实施整体变更控制 结束项目或阶段
+规划范围管理 收集需求 定义范围 创建WBS 确认范围 控制范围
+规划进度管理 定义活动 排列活动顺序 估算活动持续时间 制定进度管理计划 控制进度
+规划成本管理 估算成本 制定预算 控制成本
+规划质量管理 管理质量 控制质量
+规划资源管理 估算活动资源 获取资源 建设团队 管理团队 控制资源（物质资源 非人力资源）
+规划沟通管理 管理沟通 监督沟通
+规划风险管理 识别风险 实施定性风险管理 实施定量风险管理 规划风险应对 实施风险应对 监督风险
+规划采购管理 实施采购 控制采购
+识别干系人 规划干系人参与 管理干系人参与 监督干系人参与
+
+三大基准 范围基准 进度基准 成本基准
+创建WBS 制定进度管理计划 制定预算
+
+指导与管理项目工作 可交付成果 
+控制质量 核实的可交付成果
+确认范围 验证的可交付成果
+
+指导与管理项目工作 工作绩效数据
+2345 78910.4 工作绩效信息
+监控项目工作 工作绩效报告
+1.4 8.4 6.3 7.3
 
 
-
-
-
-
-
-
-
-
-
-
+WITH
+  DIM_TBL AS (
+    SELECT DISTINCT
+      vt_InterbankMarketData.BenchmarkCategory AS BenchmarkCategory,
+      vt_InterbankMarketData.Currency AS Currency,
+      vt_InterbankMarketData.DistributionChannel AS DistributionChannel,
+      vt_InterbankMarketData.InvestmentStrategy AS InvestmentStrategy,
+      vt_InterbankMarketData.ProductName AS ProductName,
+      vt_InterbankMarketData.ProductTags AS ProductTags
+    FROM
+      dipeak.csv.vt_InterbankMarketData
+    WHERE
+      dipeak.csv.vt_InterbankMarketData.ValuationDate = '20250428'
+  )
+SELECT
+  DIM_TBL.ProductName,
+  DIM_TBL.BenchmarkCategory,
+  DIM_TBL.Currency,
+  DIM_TBL.DistributionChannel,
+  DIM_TBL.InvestmentStrategy,
+  DIM_TBL.ProductTags
+FROM
+  DIM_TBL
+ 
