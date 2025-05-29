@@ -75,6 +75,7 @@ alias gsp='git stash pop'
 alias np='pnpm'
 alias ioa='sudo ifconfig en0 down && sudo ifconfig en1 down && sudo ifconfig en2 down && sudo ifconfig en0 up && sudo ifconfig en1 up && sudo ifconfig en2 up'
 alias mount='docker inspect --format "{{ range .Mounts }}{{ println .Source \"->\" .Destination }}{{ end }}"'
+alias dlog='docker logs --tail 1000 -f'
 alias smb='netstat -an | grep -E "\.445|\.139"'
 
 # Open proxy
