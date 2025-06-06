@@ -81,14 +81,22 @@ proxy_off() {
 
 #-----source active when change work-directory && has venv directory ---
 set_python_venv() {
-    MYVENV=./venv
-    # 检查是否已经激活
-    if [[ -d $MYVENV && "$VIRTUAL_ENV" != "$MYVENV" ]]; then
+    MYVENV=""
+    if [[ -d .venv ]]; then
+        MYVENV=.venv
+    elif [[ -d venv ]]; then
+        MYVENV=venv
+    fi
+    if [[ -n $MYVENV && "$VIRTUAL_ENV" != "$MYVENV" ]]; then
         source $MYVENV/bin/activate > /dev/null 2>&1
-    elif [[ ! -d $MYVENV && -n "$VIRTUAL_ENV" ]]; then
+    elif [[ -z $MYVENV && -n "$VIRTUAL_ENV" ]]; then
         deactivate > /dev/null 2>&1
     fi
 }
+
+# 每次 cd 自动检测并激活
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd set_python_venv
 
 set_python_venv
 
