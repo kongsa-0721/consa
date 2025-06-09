@@ -86,3 +86,23 @@ docker compose -p elk up -d --force-recreate
 
 
 ```
+
+# uv
+
+```
+## On macOS and Linux. install uv and uv python
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv python install 3.11.10
+uv python list
+## 软链接指向过去
+sudo ln -sf /Users/kongsa/.local/share/uv/python/cpython-3.11.10-macos-aarch64-none/bin/python3.11 /usr/local/bin/python
+## 查看所有软链接
+ls -l /usr/local/bin | grep '^l'
+## uv创建虚拟环境
+uv venv
+source .venv/bin/activate
+deactivate
+uv pip install -r python/nl2metric/requirements.txt # 533s
+uv pip install smolagents
+
+```
