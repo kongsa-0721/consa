@@ -1,0 +1,92 @@
+FROM node:20-alpine
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY dist-client ./dist-client
+COPY dist-server ./dist-server
+COPY prisma ./prisma
+
+RUN npm install -g npm@10.8.2 --registry=https://registry.npmmirror.com
+RUN npm install --registry=https://registry.npmmirror.com --canvas_binary_host_mirror=https://registry.npmmirror.com/-/binary/canvas
+
+EXPOSE 8000
+
+CMD ["npm", "run", "prod-start-inside"]
+
+# docker buildx build --platform linux/arm64 -f tmp/Dockerfile.inside.arm64 -t askbi-0603-release-arm64 --no-cache .
+
+# ----------------------------------------------------------------
+
+FROM registry.gitlab.dipeak.com/dipeak/generic-repository/node:20-alpine
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY dist-client ./dist-client
+COPY dist-server ./dist-server
+COPY prisma ./prisma
+
+RUN npm install -g npm@10.8.2 --registry=https://registry.npmmirror.com
+RUN npm install --registry=https://registry.npmmirror.com --canvas_binary_host_mirror=https://registry.npmmirror.com/-/binary/canvas
+
+EXPOSE 8000
+
+CMD ["npm", "run", "prod-start-inside"]
+
+# docker buildx build --platform linux/amd64 -f tmp/Dockerfile.inside.amd64 -t askbi-0603-release-amd64 --no-cache .
+# COPY 看命令的执行位置 .
+# FROM --platform=linux/amd64 node:20-alpine
+# FROM --platform=linux/arm64 node:20-alpine
+# RUN apk add --no-cache openssl
+
+# ----------------------------------------------------------------
+
+FROM registry.gitlab.dipeak.com/dipeak/generic-repository/node:keep-20.18.1-alpine3.21 AS base
+
+# Global NPM registry config for `npm install -g`.
+RUN npm config set registry https://registry.npmmirror.com
+
+FROM base AS builder
+
+WORKDIR /app
+
+# Install global npm first for better caching
+RUN npm install -g npm@10.5.0
+
+# Copy package files for dependency installation (better layer caching)
+COPY package.json package-lock.json .npmrc .
+RUN npm install
+
+# Copy source code and build server
+COPY . .
+
+FROM builder AS server-builder
+
+RUN npm run prisma-generate
+RUN npm run server-build
+
+# Since client code runs in the browser. There's no architecture-specific code in the client build.
+# We can build the client code on the build platform, and then copy it to the final image.
+# This way, we can avoid building the client code for each architecture.
+FROM --platform=$BUILDPLATFORM builder AS client-builder
+
+#  Node 默认内存限制不足（2GB）设置 Node 最大内存限制为 4GB，防止构建GC失败
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
+RUN npm run client-build
+
+# 生产环境镜像
+FROM base AS final
+
+WORKDIR /app
+COPY --from=server-builder /app/package.json .
+COPY --from=server-builder /app/package-lock.json .
+COPY --from=server-builder /app/node_modules ./node_modules
+COPY --from=server-builder /app/dist-server ./dist-server
+COPY --from=client-builder /app/dist-client ./dist-client
+COPY --from=server-builder /app/prisma ./prisma
+
+EXPOSE 8000
+
+# 设置启动命令
+ENV USER_COMMAND="npm run prod-start"
+
+CMD sh -c "$USER_COMMAND"
+
